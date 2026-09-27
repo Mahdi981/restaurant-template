@@ -7,7 +7,11 @@ import { Phone, MessageCircle, MapPin, Clock, Star, ChevronDown, Users, Award, H
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" as const },
+  },
 };
 
 const stagger = {
@@ -197,11 +201,11 @@ export default function Home() {
                 من نحن
               </motion.h3>
               <motion.p variants={fadeInUp} className="text-gray-300 text-lg leading-relaxed mb-8">
-                مطعمي هو وجهتك المفضلة للطعام اللبناني الأصيل. بدأنا رحلتنا بشغف للأكل الطازج واللذيذ، 
+                مطعمي هو وجهتك المفضلة للطعام اللبناني الأصيل. بدأنا رحلتنا بشغف للأكل الطازج واللذيذ،
                 ومنذ ذلك الحين ونحن نقدم أطباقاً تُحضّر يومياً بأجود المكونات.
               </motion.p>
               <motion.p variants={fadeInUp} className="text-gray-300 text-lg leading-relaxed mb-8">
-                نؤمن أن الطعام ليس مجرد وجبة، بل تجربة. لهذا نحرص على كل تفصيل، من اختيار المكونات 
+                نؤمن أن الطعام ليس مجرد وجبة، بل تجربة. لهذا نحرص على كل تفصيل، من اختيار المكونات
                 إلى تقديم الطلب. رضاك هو هدفنا.
               </motion.p>
 
