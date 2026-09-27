@@ -3,11 +3,11 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { Phone, MessageCircle, MapPin, Clock, Star, ChevronDown, Menu, X, Users, Award, Heart } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Clock, Star, ChevronDown, Users, Award, Heart } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
 };
 
 const stagger = {
@@ -17,7 +17,6 @@ const stagger = {
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
   const heroRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -82,10 +81,7 @@ export default function Home() {
           className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-yellow-500/20"
         >
           <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 cursor-pointer"
-            >
+            <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 cursor-pointer">
               <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-yellow-500/50">
                 م
               </div>
@@ -119,17 +115,8 @@ export default function Home() {
 
         {/* Hero with Parallax */}
         <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-          <motion.div
-            style={{ y: heroY, scale: heroScale }}
-            className="absolute inset-0 -z-10"
-          >
-            <Image
-              src="/images/burger.jpg"
-              alt="Hero"
-              fill
-              className="object-cover"
-              priority
-            />
+          <motion.div style={{ y: heroY, scale: heroScale }} className="absolute inset-0 -z-10">
+            <Image src="/images/burger.jpg" alt="Hero" fill className="object-cover" priority />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A]"></div>
           </motion.div>
 
@@ -147,20 +134,14 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="text-6xl md:text-8xl font-bold mb-8 leading-tight"
-            >
+            <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
               طعم{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
                 لا يُقاوم!
               </span>
             </motion.h2>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto"
-            >
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
               ساندويشات، متبلات، مناقيش، ووجبات. توصيل لكل المناطق.
             </motion.p>
 
@@ -197,7 +178,6 @@ export default function Home() {
         {/* About */}
         <section className="px-6 py-32 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -80 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -205,22 +185,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative h-[500px] rounded-3xl overflow-hidden"
             >
-              <Image
-                src="/images/meal.jpg"
-                alt="About"
-                fill
-                className="object-cover"
-              />
+              <Image src="/images/meal.jpg" alt="About" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </motion.div>
 
-            {/* Content */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-            >
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
               <motion.span variants={fadeInUp} className="text-yellow-400 text-sm font-semibold tracking-[0.3em]">
                 ABOUT US
               </motion.span>
@@ -236,7 +205,6 @@ export default function Home() {
                 إلى تقديم الطلب. رضاك هو هدفنا.
               </motion.p>
 
-              {/* Stats */}
               <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-6">
                 <div className="text-center">
                   <Users className="text-yellow-400 mx-auto mb-2" size={32} />
@@ -260,13 +228,7 @@ export default function Home() {
 
         {/* How to Order */}
         <section className="px-6 py-32 max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="text-center mb-20"
-          >
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-20">
             <motion.span variants={fadeInUp} className="text-yellow-400 text-sm font-semibold tracking-[0.3em]">
               HOW TO ORDER
             </motion.span>
@@ -414,12 +376,7 @@ export default function Home() {
 
         {/* Contact */}
         <section id="contact" className="px-6 py-32 max-w-3xl mx-auto text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeInUp} className="mb-8">
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
